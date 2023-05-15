@@ -120,7 +120,7 @@
       }
     }
   },
-  "defaultProject": "presupuesto-app",
+  
   "cli": {
     "analytics": false
   }
