@@ -6,12 +6,18 @@
   <div class="ingreso">
     <h2 class="ingreso_titulo">Ingresos</h2>
 
-    <app-ingresos></app-ingresos>
+     <app-ingresos
+     *ngFor="let ingreso of ingresos"
+     [ingreso]="ingreso"
+     ></app-ingresos> 
   </div>
 
   <div class="egreso">
     <h2 class="egreso_titulo">Egresos</h2>
 
-    <app-egresos></app-egresos>
+    <app-egresos
+    *ngFor="let egreso of egresos"
+    [egreso]="egreso"
+    ></app-egresos>
   </div>
 </div>

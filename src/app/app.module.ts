@@ -6,6 +6,8 @@ import { FlujoComponent } from './flujo/flujo.component';
 import { FormComponent } from './form/form.component';
 import { IngresosComponent } from './ingresos/ingresos.component';
 import { EgresosComponent } from './egresos/egresos.component';
+import { flujoService } from './flujo.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,9 +18,9 @@ import { EgresosComponent } from './egresos/egresos.component';
     EgresosComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, FormsModule
   ],
-  providers: [],
+  providers: [flujoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
