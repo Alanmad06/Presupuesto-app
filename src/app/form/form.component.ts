@@ -1,7 +1,8 @@
 import { Component, ElementRef, ViewChild , EventEmitter } from '@angular/core';
 import { valor } from '../valor.model';
 import { flujoService } from '../flujo.service';
-import { FlujoComponent } from '../flujo/flujo.component';
+
+
 
 
 @Component({
@@ -17,7 +18,13 @@ export class FormComponent {
 
   
 
-  agregarIngreso(tipo: HTMLSelectElement) {
+  agregarIngreso(tipo: HTMLSelectElement ) {
+
+    if(this.descripcion.nativeElement.value.length===0 || this.valor.nativeElement.value.length===0){
+      
+
+    }else{
+      
     let valoraux = new valor(this.descripcion.nativeElement.value,parseInt(this.valor.nativeElement.value));
     if(tipo.value =="ing"){
       this.flujoService.agregarIngreso(valoraux);
@@ -28,7 +35,7 @@ export class FormComponent {
       this.flujoService.egresoTotalEmit.emit(this.flujoService.cegresoTotal())
     }
 
-    
+  }
     
     
     
