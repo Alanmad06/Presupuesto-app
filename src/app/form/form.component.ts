@@ -18,16 +18,19 @@ export class FormComponent {
   
 
   agregarIngreso(tipo: HTMLSelectElement) {
+    let valoraux = new valor(this.descripcion.nativeElement.value,parseInt(this.valor.nativeElement.value));
+    if(tipo.value =="ing"){
+      this.flujoService.agregarIngreso(valoraux);
+      this.flujoService.ingresoTotalEmit.emit(this.flujoService.cingresoTotal())
+    }
+    else{
+      this.flujoService.agregarEgreso(valoraux);
+      this.flujoService.egresoTotalEmit.emit(this.flujoService.cegresoTotal())
+    }
 
     
-
-
-    let valoraux = new valor(
-      this.descripcion.nativeElement.value,parseInt(this.valor.nativeElement.value)
-      
-    );
-    this.flujoService.agregarIngreso(valoraux);
-    this.flujoService.ingresoTotalEmit.emit(this.flujoService.cingresoTotal())
+    
+    
     
 
   }

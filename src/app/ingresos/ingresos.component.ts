@@ -9,16 +9,24 @@ import { valor } from '../valor.model';
 })
 export class IngresosComponent implements OnInit {
   
-  @Input()ingreso:valor
-  
+  @Input()ingreso:valor;
+  ingresoTotal:number;
 
   constructor(private flujoService:flujoService){
-    
+    this.flujoService.ingresoTotalEmit.subscribe(
+      (ingresoTotalEmit:number)=>{
+        this.ingresoTotal=ingresoTotalEmit
+      }
+    )
   }
   ngOnInit(): void {
-    
+    this.ingresoTotal=this.flujoService.cingresoTotal()
   }
+  
 
- 
-
+ eliminarIngreso(){
+  this.flujoService.eliminarIngreso(this.ingreso)
+  this.flujoService.ingresoTotalEmit.emit(this.flujoService.cingresoTotal())
+    
+}
 }

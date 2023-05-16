@@ -9,6 +9,7 @@ import { flujoService } from '../flujo.service';
 export class FlujoComponent implements OnInit {
 
   ingresoTotal:number;
+  egresoTotal:number;
 
   constructor(private flujoService:flujoService){
     this.flujoService.ingresoTotalEmit.subscribe(
@@ -16,11 +17,19 @@ export class FlujoComponent implements OnInit {
         this.ingresoTotal=ingresoTotalEmit
       }
     )
+    this.flujoService.egresoTotalEmit.subscribe(
+      (egresoTotalEmit:number)=>{
+        this.egresoTotal=egresoTotalEmit
+      }
+
+
+    )
     
   }
   ngOnInit(): void {
-      this.flujoService.cingresoTotal()
+     
       this.ingresoTotal=this.flujoService.cingresoTotal()
+      this.egresoTotal=this.flujoService.cegresoTotal()
   }
 
 }
