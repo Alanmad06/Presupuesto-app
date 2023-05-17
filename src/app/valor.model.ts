@@ -1,5 +1,3 @@
-export class valor{
-
-    constructor(public descripcion:string, public valor :number){} 
-
+export class valor {
+  constructor(public descripcion: string, public valor: number) {}
 }

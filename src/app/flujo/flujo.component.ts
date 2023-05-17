@@ -10,6 +10,7 @@ export class FlujoComponent implements OnInit {
 
   ingresoTotal:number;
   egresoTotal:number;
+  porcentajeTotal:number
 
   constructor(private flujoService:flujoService){
     this.flujoService.ingresoTotalEmit.subscribe(
@@ -31,5 +32,13 @@ export class FlujoComponent implements OnInit {
       this.ingresoTotal=this.flujoService.cingresoTotal()
       this.egresoTotal=this.flujoService.cegresoTotal()
   }
+  cporcentajeTotal():number{
+
+    
+    return ( this.ingresoTotal ===0) ?  0 : (Math.abs( this.egresoTotal/this.ingresoTotal)) ;
+    
+  }
+
+  
 
 }

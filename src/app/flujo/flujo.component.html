@@ -4,13 +4,13 @@
             Presupuesto Disponible:
         </div>
         
-        <div class="presupuesto_valor"> $ {{(ingresoTotal-egresoTotal).toFixed(2)}}</div>
+        <div class="presupuesto_valor">  {{(ingresoTotal+egresoTotal) | currency: 'MXN' :'$' :'1.2-2'}}</div>
         
         <div class="presupuesto_ingreso limpiarEstilos">
             <div class="presupuesto_ingreso--texto">Ingresos</div>
             <div class="right">
                 <div class="presupuesto_ingreso--valor">
-                    + ${{ingresoTotal.toFixed(2)}}</div>
+                    {{ingresoTotal | currency: 'MXN' :'$' :'1.2-2' }}</div>
                 <div class="presupuesto_ingreso--porcentaje">&nbsp;</div>
             </div>
         </div>
@@ -18,8 +18,8 @@
         <div class="presupuesto_egreso limpiarEstilos">
             <div class="presupuesto_egreso--text">Egresos</div>
             <div class="right limpiarEstilos">
-                <div class="presupuesto_egreso--valor">- ${{egresoTotal.toFixed(2)}}</div>
-                <div class="presupuesto_egreso--porcentaje">{{((egresoTotal/ingresoTotal)*100).toFixed(0)}}%</div>
+                <div class="presupuesto_egreso--valor"> {{egresoTotal | currency: 'MXN' :'$' :'1.2-2'}}</div>
+                <div class="presupuesto_egreso--porcentaje">{{cporcentajeTotal() | percent}}</div>
             </div>
         </div>
     </div>

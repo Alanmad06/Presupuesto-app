@@ -1,14 +1,42 @@
-<form>
-    <div class="agregar">
-        <div class="agregar_contenedor">
-            <select class="agregar_tipo" #tipo>
-                <option value="ing" selected>+</option>
-                <option value="egr">-</option>
-            </select>
-            <input type="text" class="agregar_descripcion" placeholder="Agregar Descripción" #descripcion>
-            <input type="number" class="agregar_valor" placeholder="Valor" #valor>
-            <button class="agregar_btn"><i class="ion-ios-checkmark-outline" (click)="agregarIngreso(tipo)"></i></button>
-        </div>
+<form (ngSubmit)="f.form.valid && agregarIngreso(tipo1)" #f="ngForm">
+  <!-- Para comprobar que el formulario no este con campos vacios se debe utilizar
+    TwoWayBinding en los inputs y utilizar (ngSubmit)="f.form.valid && agregarIngreso(tipo1)-> se ejecuta 
+    la funcion solo si se comprueba el form" #f="ngForm" -->
+  <div class="agregar">
+    <div class="agregar_contenedor">
+      <select
+        (change)="tipoOperacion($event)"
+        [ngClass]="{ redfocus: tipos === 'egreso' }"
+        class="agregar_tipo"
+        #tipo1
+      >
+        <option value="ingreso" selected>+</option>
+        <option value="egreso">-</option>
+      </select>
+      <input
+        [ngClass]="{ redfocus: tipos === 'egreso' }"
+        type="text"
+        class="agregar_descripcion"
+        name="descripcion"
+        placeholder="Agregar Descripción"
+        [(ngModel)]="descripcion"
+        required
+      />
+      <input
+        [ngClass]="{ redfocus: tipos === 'egreso' }"
+        type="number"
+        class="agregar_valor"
+        placeholder="Valor"
+        name="valor"
+        [(ngModel)]="valor"
+        required
+      />
+      <button type="submit" class="agregar_btn">
+        <i
+          [ngClass]="{ red: tipos === 'egreso' }"
+          class="ion-ios-checkmark-outline"
+        ></i>
+      </button>
     </div>
-  </form>
-  
+  </div>
+</form>

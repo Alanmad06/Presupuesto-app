@@ -27,4 +27,8 @@ export class EgresosComponent implements OnInit{
     this.flujoService.eliminarEgreso(this.egreso)
     this.flujoService.egresoTotalEmit.emit(this.flujoService.cegresoTotal())
   }
+
+  cporcentaje():number{
+    return (this.ingresoTotal===0)?0:Math.abs(this.egreso.valor/this.ingresoTotal)
+  }
 }
